@@ -54,7 +54,14 @@
     "unlimitedStorage",
     "webNavigation",
     "webRequest",
-    "webRequestBlocking"
+    "webRequestBlocking",
+
+    "accountsRead",
+    "accountsFolders",
+    "addressBooks",
+    "compose",
+    "messagesRead",
+    "messagesMove"
   ],
 
   "commands": {
