@@ -1,0 +1,74 @@
+{
+  "manifest_version": 2,
+  "name": "WebExtension API Support",
+  "short_name": "WX API Support",
+  "description": "Find out which APIs are supported",
+  "version": "1.0.0",
+  "applications": {
+    "gecko": {
+      "id": "wx-testbed@mozilla.kewis.ch"
+    }
+  },
+
+  "icons": {
+    "512": "images/addon.png"
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "alarms",
+    "bookmarks",
+    "browsingData",
+    "captivePortal",
+    "clipboardRead",
+    "clipboardWrite",
+    "contentSettings",
+    "contextMenus",
+    "contextualIdentities",
+    "cookies",
+    "debugger",
+    "dns",
+    "downloads",
+    "downloads.open",
+    "find",
+    "geolocation",
+    "history",
+    "identity",
+    "idle",
+    "management",
+    "menus",
+    "menus.overrideContext",
+    "notifications",
+    "pageCapture",
+    "pkcs11",
+    "privacy",
+    "proxy",
+    "search",
+    "sessions",
+    "storage",
+    "tabHide",
+    "tabs",
+    "theme",
+    "topSites",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+
+  "commands": {
+    "show-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      },
+      "description": "Open the support matrix page"
+    }
+  },
+  "browser_action": {
+    "default_icon": "images/addon.png"
+  },
+
+
+  "background": { "scripts": [ "background.js" ] }
+}

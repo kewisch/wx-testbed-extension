@@ -1,0 +1,24 @@
+
+
+td.value {
+  padding: 4px;
+}
+
+.supported.yes td.value {
+  background-color: lightgreen;
+}
+.supported.no td.value {
+  background-color: red;
+}
+
+.supported.new td.value {
+  background-color: lightgray;
+}
+
+tr.header {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+tr.header td {
+  padding-top: 1em;
+}
