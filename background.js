@@ -294,7 +294,7 @@ const MASTER_LIST = {
   ],
   runtime: [
     "connect",
-    "onConnected",
+    "onConnect",
     "connectNative",
     "getBackgroundPage",
     "getBrowserInfo",

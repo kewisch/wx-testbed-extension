@@ -37,6 +37,7 @@
     "identity",
     "idle",
     "management",
+    "nativeMessaging",
     "menus",
     "menus.overrideContext",
     "notifications",
