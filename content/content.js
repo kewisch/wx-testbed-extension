@@ -11,6 +11,7 @@ function displayApi(baseObjectName, key, supported) {
 
   let tda = tdk.appendChild(document.createElement("a"));
   tda.textContent = baseObjectName + "." + key;
+  tda.setAttribute("target", "_blank");
   let apihref = tda.textContent.split(".");
   apihref.shift();
   tda.href = "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/" + apihref.join("/");
