@@ -38,10 +38,12 @@ function display(baseObjectName, obj, hlevel) {
   let frag = document.createDocumentFragment();
   frag.appendChild(displayHeader(baseObjectName));
   let hasValuesSupported = Object.values(obj.supported).some(subobj => subobj.supported);
+  let hasValuesSupportedTL = false;
 
   for (let [key, values] of Object.entries(obj.supported)) {
     if (values.supported) {
       frag.appendChild(display(baseObjectName + "." + key, values, hlevel + 1));
+      hasValuesSupportedTL = true;
     } else if (typeof values == "boolean") {
       if (hasValuesSupported) {
         frag.appendChild(displayHeader(baseObjectName + "." + key));
@@ -51,6 +53,9 @@ function display(baseObjectName, obj, hlevel) {
   }
 
   for (let key of obj.remaining) {
+    if (hasValuesSupportedTL) {
+      frag.appendChild(displayHeader(baseObjectName + "." + key));
+    }
     frag.appendChild(displayApi(baseObjectName, key, "new"));
   }
 
