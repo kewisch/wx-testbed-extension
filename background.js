@@ -440,46 +440,28 @@ const MASTER_LIST = {
   ]
 };
 
-function attemptApi(baseObject, names) {
-  let supported = {};
-
-  if (typeof baseObject == "undefined") {
-    return false;
-  }
-
-  let remaining = new Set(Object.keys(baseObject));
-
-  for (let api of names) {
-    supported[api] = typeof baseObject[api] != "undefined";
-    remaining.delete(api);
-  }
-
-  remaining = [...remaining].filter(api => {
-    return typeof baseObject[api] != "undefined" && api[0].toUpperCase() !== api[0];
-  });
-
-  return { supported, remaining };
-}
-
 function attempt(baseObject, obj) {
   let supported = {};
-  let remaining = new Set(Object.keys(baseObject));
+  let remaining = new Set(Object.keys(baseObject || {}));
 
-  if (typeof baseObject == "undefined") {
-    return false;
-  }
-
-  for (let [key, values] of Object.entries(obj)) {
-    if (key == "__ignore") {
-      for (let api of values) {
-        remaining.delete(api);
-      }
-    } else if (Array.isArray(values)) {
-      supported[key] = attemptApi(baseObject[key], values);
-    } else {
-      supported[key] = attempt(baseObject[key], values);
+  if (Array.isArray(obj)) {
+    for (let api of obj) {
+      supported[api] = typeof baseObject != "undefined" && typeof baseObject[api] != "undefined";
+      remaining.delete(api);
     }
-    remaining.delete(key);
+  } else {
+    for (let [key, values] of Object.entries(obj)) {
+      if (key == "__ignore") {
+        for (let api of values) {
+          remaining.delete(api);
+        }
+      } else if (typeof baseObject == "undefined") {
+        supported[key] = false;
+      } else {
+        supported[key] = attempt(baseObject[key], values);
+      }
+      remaining.delete(key);
+    }
   }
 
   remaining = [...remaining].filter(api => {
